@@ -7,9 +7,10 @@
                         <div class="col-sm-4 col-lg-6 wow fadeInUp" data-wow-delay=".2s">
                             <div class="footer-title">Info</div>
                             <ul class="nav-list">
-                                <li><a href={{ route('church.about') }}>About Us</a></li>
+                                <li class="rd-nav-item"><a class="rd-nav-link" href="{{ route('church.history') }}">About Us</a>
+                                </li>
                                 <li><a href="{{ route('church.give') }}">Give</a></li>
-                                <li><a href={{ route('church.contact') }}>Contacts</a></li>
+                                {{-- <li><a href={{ route('church.contact') }}>Contacts</a></li> --}}
                                 <li><a href="{{ route('church.privacy-policy') }}">Privacy Policy</a></li>
                             </ul>
                         </div>

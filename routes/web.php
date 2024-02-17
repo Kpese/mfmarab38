@@ -22,8 +22,6 @@ use Illuminate\Support\Facades\Route;
 
 
 
-
-
 Route::group(['middleware' => 'auth'], function(){
 
 Route::get('/admin', [AdminController::class, 'index'])->name('dashboard');
@@ -56,6 +54,7 @@ Route::delete('/admin/{id}/event', [AdminController::class, 'destroy_event'])->n
 // CHURCH LOCATION
 Route::get('/admin/location', [AdminController::class, 'location'])->name('admin.location');
 Route::post('/admin/location', [AdminController::class, 'handle_location'])->name('admin.location');
+Route::delete('/admin/{id}/locaton', [AdminController::class, 'destroy_location'])->name('admin.destroy_locaton');
 
 
 // CHURCH INTRODUCTION
@@ -67,7 +66,7 @@ Route::delete('/admin/{id}/intro', [AdminController::class, 'destroy_intro'])->n
 // CHURCH BIBLE VERSES
 Route::get('/admin/bible_verse', [AdminController::class, 'bible_verse'])->name('admin.bible_verse');
 Route::post('/admin/bible_verse', [AdminController::class, 'handle_bible_verse'])->name('admin.bible_verse');
-Route::delete('/admin/{id}/bible', [ActivityController::class, 'destroy_verse'])->name('admin.destroy_verse');
+Route::delete('/admin/{id}/bible', [AdminController::class, 'destroy_verse'])->name('admin.destroy_verse');
 
 
 Route::post('admin/logout', [AuthController::class, 'logout'])->name('logout');

@@ -37,33 +37,39 @@ class AdminController extends Controller
     public function handle_location(){
       $validate = request()->validate([
             'name' => 'required',
-            'upname' => 'required',
             'address' => 'required',
             'phone' => 'required',
             'images' => 'image',
         ]);
 
-        $name = $validate['upname'];
-        unset($validate['upname']);
-
-        if(request('image')){
-            $image = request()->file('image');
+            $image = request()->file('images');
             $filename = time() . '_church_location_' . $image->getClientOriginalName();
             $image->move(public_path('assets/images/church_location'), $filename);
-            $validate['images'] = $filename;
-        }
 
-        Church_location::where('name', $name)->update($validate);
+        Church_location::create([
+            'name' => $validate['name'],
+            'address' => $validate['address'],
+            'phone' => $validate['phone'],
+            'images' => $filename,
+        ]);
 
         return back()->with('success', 'church location created successfully');
     }
 
+    public function destroy_location($id)
+    {
+        $location =  Church_location::findOrFail($id);
+        $location->delete();
 
-
-
-    public function contact(){
-        return view('admin.contact');
+        return back()->with('success', "location deleted Successfully");
     }
+
+
+
+
+    // public function contact(){
+    //     return view('admin.contact');
+    // }
 
     // *********   BIBLE VERSE  **************************************
     public function bible_verse(){

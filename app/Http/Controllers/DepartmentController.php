@@ -35,7 +35,7 @@ class DepartmentController extends Controller
         $department->office = $validate['office'];
         $department->save();
 
-        return back()->with('success', 'department created successfully');
+        return redirect()->route('admin.department')->with('success', 'department created successfully');
     }
 
 

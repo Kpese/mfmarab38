@@ -14,16 +14,11 @@
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
                 @endif
-
+<h1 class="m-3">Create Location</h1>
                 <div class="mt-5 m-5 row border pb-4">
                     <form method="post" action={{ route('admin.location') }} enctype="multipart/form-data">
                         @csrf
                       <div class="row">
-                        <div class="col-lg-6 mt-5">
-                            <label>Updated Name:</label><br>
-                            <input type="text" name="upname" class="form-control" placeholder="e.g God is great">
-                        </div>
-
 
                         <div class="col-lg-6 mt-5">
                             <label>Name:</label><br>
@@ -53,7 +48,6 @@
                     </form>
                     </div>
 
-
                     <div class="container mt-5 m-5 ">
                         <table id="example" class="display" style="width:100%">
                             <thead>
@@ -63,7 +57,6 @@
                                     <th>Address</th>
                                     <th>Phone</th>
                                     <th>Images</th>
-                                    <th>Created</th>
                                     <th>Options</th>
                                 </tr>
                             </thead>
@@ -76,9 +69,8 @@
                                     <td>{{ $item-> address }}</td>
                                     <td>{{ $item-> phone }}</td>
                                     <td>{{ $item-> images }}</td>
-                                    <td>{{ $item-> created_at -> diffForHumans()}}</td>
                                     <td>
-                                        <form action={{ route('admin.destroy_sermon', $item->id) }} method="post">
+                                        <form action={{ route('admin.destroy_locaton', $item->id) }} method="post">
                                             @csrf
                                             @method('delete')
                                             <div class="d-flex">
